@@ -1,0 +1,17 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "to find the weather of your location",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ansuman mishra",
+  "license": "ISC",
+  "dependencies": {
+    "@popperjs/core": "^2.6.0",
+    "express": "^4.17.1",
+    "fontawesome": "^5.6.3",
+    "hbs": "^4.1.1"
+  }
+}

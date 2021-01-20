@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      {{>head}}
+</head>
+
+<body>
+      {{>navbar}}
+
+      <!-- header section -->
+
+      <div class="main_header">
+            <div class="row">
+                  <div class="col-md-10 col-12 mx-auto">
+                        <div class="container-fluid main_content">
+                              <form class="temp_form">
+                                    <input type="text" id="cityName" placeholder="Enter your city name" autocomplete="off">
+                                    <br>
+                                    <input type="submit" value="search" id="submitBtn">
+                                    <p id="temp_err"></p>
+                              </form>
+                        </div>
+                        <div class="tempInformation">
+                              <div class="top_layer">
+                                    <p id="day">Tuesday</p>
+                                    <p id="time">20:45:45</p>
+                                    <p id="today_date">13 OCT</p>
+                              </div>
+                              <div class="main_layer">
+                                    <p id="city_name">Get Output Hear</p>
+                                    <div class="middle_layer data_hide">
+                                          <p id="temp"> <span id="temp_real">0</span> <sup>o</sup>C </p>
+                                          
+                                          <p id="temp_status"> <i class="fas fa-cloud"></i> </p>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+
+      </div>
+      <!-- footer creation -->
+
+      {{>footer}}
+      <script src="js/main.js"></script>
+
+      <script>
+            const day = document.getElementById("day");
+            const weekDay = () => {
+                  let weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+                  let currWeekDay = new Date();
+                  const tWeek = weekday[currWeekDay.getDay()];
+                  day.innerText = tWeek;
+            }
+            weekDay();
+      </script>
+
+      <script>
+            const today_date = document.getElementById("today_date")
+            const time = document.getElementById("time")
+            const currDate = () => {
+                  let monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
+                  let currDate = new Date();
+                  let currmonth = currDate.getMonth();
+                  let aMonth = monthArr[currmonth];
+                  let date = currDate.getDate();
+                  let hour = currDate.getHours();
+                  let min = currDate.getMinutes();
+                  let sec = currDate.getSeconds();
+                  let am_pm = "AM";
+                  if (hour > 11) {
+                        am_pm = "PM";
+                        if (hour > 12) hour -= 12;
+                  }
+                  if (min < 10) {
+                        min = "0" + min;
+                  }
+                  if (sec < 10) {
+                        sec = "0" + sec;
+                  }
+                  today_date.innerText = `${aMonth} ${date}`;
+                  time.innerText = `${hour}:${min}:${sec} ${am_pm}`;
+                  
+            }
+            {{!-- currDate(); --}}
+            setInterval(currDate,1000);
+            window.onload = currDate;
+
+      </script>
+</body>
+
+</html>
